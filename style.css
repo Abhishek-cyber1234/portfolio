@@ -1,0 +1,143 @@
+#body{
+    height: 100%;
+    width: 100%;
+}
+*{
+    padding: 0%;
+    margin: 0%;
+}
+#header{
+    background-color: #d3ea08;
+    height: 10vh;
+    
+   
+  position: fixed;   /* Header ko ek jagah fix karne ke liye */
+  top: 0;            /* Screen ke bilkul top se chipkane ke liye */
+  left: 0;           /* Left side se chipkane ke liye */
+  width: 100%;       /* Poori screen ki width cover karne ke liye */
+  z-index: 1000;     /*Taaki website ka baaki content header ke peeche se nikle, header ke upar na aaye*/
+}
+.nav{
+    width: 90%;
+    background-color: pink;
+    height: 50px;
+    
+    margin-left: 70px; 
+    margin-right: 40px;
+    margin-top: 17px;
+    /* padding: 10px 20px; */
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  text-decoration: solid;
+  
+}
+.home{
+    padding-left: 30px;
+    
+     text-decoration: solid;
+    
+}
+.eassay{
+    padding: 30px;
+      text-decoration: solid;
+}
+.intro{
+    height: 80%;
+    width: 40%;
+    background-color: white;
+    margin-right: 80px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+.intro h1{
+    font-size:70px;
+    justify-content: space-around;
+    padding-left: 40px;
+    width: 100%;
+    
+}
+.intro p{
+    
+    justify-content: space-around;
+    padding: 10px;
+    padding-left: 50px;
+    font-size: medium;
+    
+    
+}
+.photo{
+    height: 80%;
+    width: 40%;
+    background-color: white;
+    margin-left: 200px;
+    border-radius: 50px;
+    overflow: hidden;
+    
+}
+.photo img{
+
+    object-fit: cover;
+}
+.work{
+    padding: 30px;
+     text-decoration: solid;
+}
+body {
+  padding-top: 67px; /* Agar tumhara header 70px uncha hai */
+}
+
+#content{
+    background-color: #0ba8d3;
+     height: 500vh;
+     
+}
+.page1{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #c60e0e;
+   
+}
+.page2{
+    height: 100vh;
+    width: 100%;
+    
+    background-color: #0ec61a;
+   
+}
+.page3{
+    height: 100vh;
+    width: 100%;
+    
+    background-color: #e10b8f;
+   
+}
+.page4{
+    height: 100vh;
+    width: 100%;
+    
+    background-color: #92c60e;
+   
+}
+.page5{
+    height: 100vh;
+    width: 100%;
+    
+    background-color: #480ec6;
+   
+}
+#footer{
+    background-color: #54cf7d;
+     height: 30vh;
+}
+
+@media screen  {
+   
+}
