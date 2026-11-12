@@ -1,111 +1,455 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Abhishek Modanwal - CSE student, aspiring AI/ML engineer and open-source contributor.">
+  <title>Abhishek Modanwal | Developer Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080b12;
+      --surface: #101621;
+      --surface2: #151e2c;
+      --text: #edf2fa;
+      --muted: #98a5b8;
+      --accent: #75e0c1;
+      --border: rgba(255,255,255,.09);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(1100px, 90%); margin: auto; }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,11,18,.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font: 700 1.25rem 'Space Grotesk';
+      letter-spacing: -1px;
+    }
+    .logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: .9rem; }
+    .nav-links a:hover { color: var(--accent); }
+    .menu-btn {
+      display: none;
+      background: none;
+      color: var(--text);
+      border: 0;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 650px;
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      align-items: center;
+      gap: 50px;
+      padding: 90px 0;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-size: .85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    h1 {
+      font: 700 clamp(2.7rem, 6vw, 5rem)/1.1 'Space Grotesk';
+      letter-spacing: -3px;
+      margin: 20px 0;
+    }
+    h1 span { color: var(--accent); }
+    .hero p { color: var(--muted); max-width: 570px; font-size: 1.05rem; }
+    .buttons { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      transition: .25s;
+    }
+    .btn-primary { background: var(--accent); color: #07130f; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    .code-card {
+      background: linear-gradient(145deg, #172536, #101621);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 25px;
+      box-shadow: 0 25px 80px rgba(0,0,0,.3);
+      transform: rotate(2deg);
+    }
+    .dots { display: flex; gap: 7px; margin-bottom: 25px; }
+    .dots i { width: 10px; height: 10px; border-radius: 50%; background: #ff6b6b; }
+    .dots i:nth-child(2) { background: #ffd166; }
+    .dots i:nth-child(3) { background: var(--accent); }
+    .code-card pre {
+      color: #c8d5e5;
+      font: 14px/2 monospace;
+      white-space: pre-wrap;
+    }
+    .code-card .green { color: var(--accent); }
+    .code-card .purple { color: #c7a5ff; }
+
+    /* Common sections */
+    section { padding: 85px 0; }
+    .section-heading { margin-bottom: 38px; }
+    .section-heading small { color: var(--accent); letter-spacing: 2px; font-weight: 700; }
+    h2 { font: 700 clamp(2rem, 4vw, 2.8rem) 'Space Grotesk'; margin-top: 8px; }
+    .section-heading p { color: var(--muted); margin-top: 10px; }
+
+    .about-grid, .skills-grid, .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 26px;
+      transition: .25s;
+    }
+    .card:hover { border-color: rgba(117,224,193,.4); transform: translateY(-4px); }
+    .card h3 { font: 600 1.2rem 'Space Grotesk'; margin-bottom: 12px; }
+    .card p { color: var(--muted); font-size: .95rem; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 18px; }
+    .tag {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: #c5d2df;
+      border-radius: 6px;
+      padding: 5px 11px;
+      font-size: .8rem;
+    }
+
+    /* Skills */
+    .skills-grid { grid-template-columns: repeat(3, 1fr); }
+    .skill-icon { color: var(--accent); font-size: 1.5rem; margin-bottom: 12px; }
+
+    /* Projects */
+    .project-grid { grid-template-columns: repeat(2, 1fr); }
+    .project-card { display: flex; flex-direction: column; }
+    .project-card .project-link {
+      color: var(--accent);
+      display: inline-block;
+      margin-top: 18px;
+      font-weight: 600;
+    }
+    .project-card .project-link:hover { text-decoration: underline; }
+
+    /* Education */
+    .timeline { border-left: 2px solid #263b43; padding-left: 25px; }
+    .timeline-item { position: relative; margin-bottom: 28px; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -33px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .timeline-item h3 { font: 600 1.15rem 'Space Grotesk'; }
+    .timeline-item p { color: var(--muted); }
+
+    /* Contact */
+    .contact-box {
+      text-align: center;
+      background: linear-gradient(135deg, #142a2b, #111a27);
+      border: 1px solid var(--border);
+      padding: 55px 25px;
+      border-radius: 18px;
+    }
+    .contact-box p { color: var(--muted); margin: 12px 0 25px; }
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      padding: 25px 0;
+      font-size: .85rem;
+    }
+
+    @media (max-width: 760px) {
+      .menu-btn { display: block; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: var(--surface);
+        padding: 25px 5%;
+        flex-direction: column;
+        gap: 18px;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.active { display: flex; }
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 75px 0; }
+      .code-card { max-width: 500px; transform: none; }
+      .about-grid, .skills-grid, .project-grid { grid-template-columns: 1fr; }
+      section { padding: 65px 0; }
+      h1 { letter-spacing: -2px; }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <div id="name">
-            <h1>Name</h1>
-            <p>Abhishek Modanwal</p>
-            <img src="AB_PHOTO.jpg" width="200" alt="Profile Photo">
-            <nav>
-                <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
-
-            </nav>
-            <section id="about">
-    <h2>About Me</h2>
-    <p>
-    Hi, I'm Abhishek, a Computer Science and Engineering student passionate about learning software development and problem-solving. I'm currently building my skills in Data Structures, Web Development, and Programming, while working on practical projects to strengthen my engineering fundamentals.    
-    </p>
-    <section>
-<div id="career">
-    <h3>Career Goals</h3>
-    <p>
-        My goal is to become a skilled software engineer with strong problem-solving and computer science fundamentals. I want to gain practical experience by building real-world projects, continuously improve my technical skills, and contribute to meaningful software solutions.
-    </p>
-</div>
-</section>
-
-
-
-
-   
-</section>
-
-<section id="home">
-    <h2>Home</h2>
-</section>
-
-
-
-<section id="skills">
-    <h2>Skills</h2>
-<div id="skills">
-    
-          <h4>Programming Languages</h4>
-          <ul>
-    <li>C</li>
-    <li>C++</li>
-    <li>OPPS</li>
-    <li>HTML</li>
-    <li>CSS</li>
-  
-</ul>
-<h3>Technologies</h3>
-<ul>
-    <li>DSA</li>
-    <li>Git & GitHub</li>
-    <li>Web Development</li>
+<header>
+  <nav class="container">
+    <a href="#home" class="logo">Abhishek<span>.</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-<h3>Tools</h3>
-<ul>
-    <li>VS Code</li>
-    <li>Git</li>
-    <li>GitHub</li>
-    <li>Obsidian</li>
+  </nav>
+</header>
 
-</ul>
-
-
-</div>
-</section>
-
-<section id="projects">
-    <h2>Projects</h2>
-    <div id="projects">
-    
-    <p>working.....</p>
-</div>
-</section>
-
-<section id="education">
-    <h2>Education</h2>
-    <div id="Education">
-        
-        <p>B.Tech — Computer Science & Engineering
-Deen Dayal Upadhyaya Gorakhpur University, Gorakhpur
-2025 – 2029
-Currently pursuing B.Tech in Computer Science & Engineering.</p>
+<main>
+  <section class="container hero" id="home">
+    <div>
+      <div class="eyebrow">CSE Student · Open Source Learner</div>
+      <h1>Hi, I'm<br><span>Abhishek</span><br>Modanwal.</h1>
+      <p>
+        A Computer Science student exploring software development,
+        Artificial Intelligence and Machine Learning. I enjoy learning
+        by building, solving problems and contributing to open source.
+      </p>
+      <div class="buttons">
+        <a class="btn btn-primary" href="#projects">Explore My Work ↗</a>
+        <a class="btn btn-secondary" href="#contact">Get In Touch</a>
+      </div>
     </div>
-</section>
 
-<section id="contact">
-    <h2>Contact</h2>
-       <h3>Email</h3>
-    <p>@gmail.com</p>
-</section>
+    <div class="code-card">
+      <div class="dots"><i></i><i></i><i></i></div>
+      <pre><span class="purple">class</span> Developer:
+  name = <span class="green">"Abhishek"</span>
+  role = <span class="green">"CSE Student"</span>
 
+  interests = [
+    <span class="green">"AI / ML"</span>,
+    <span class="green">"Open Source"</span>,
+    <span class="green">"Software Dev"</span>
+  ]
 
+  <span class="purple">def</span> learn(self):
+    <span class="purple">return</span> <span class="green">"Keep building!"</span></pre>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-heading">
+        <small>01 / ABOUT ME</small>
+        <h2>A little about me.</h2>
+        <p>Learning today, building for tomorrow.</p>
+      </div>
+      <div class="about-grid">
+        <div class="card">
+          <h3>Who I Am</h3>
+          <p>
+            I'm pursuing B.Tech in Computer Science and Engineering at
+            Deen Dayal Upadhyaya Gorakhpur University. I'm currently
+            strengthening my programming and computer science fundamentals.
+          </p>
         </div>
-    </header>
+        <div class="card">
+          <h3>What I'm Exploring</h3>
+          <p>
+            My interests include AI/ML, data structures, software
+            development and open-source collaboration. I believe in
+            learning through practical projects and consistent practice.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-heading">
+        <small>02 / MY TOOLKIT</small>
+        <h2>Skills & Technologies.</h2>
+        <p>Technologies I'm learning and working with.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="card">
+          <div class="skill-icon">⌘</div>
+          <h3>Programming</h3>
+          <div class="tag-list">
+            <span class="tag">C</span>
+            <span class="tag">Python</span>
+            <span class="tag">C++</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="skill-icon">◈</div>
+          <h3>Web Development</h3>
+          <div class="tag-list">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+        <div class="card">
+          <div class="skill-icon">⌘</div>
+          <h3>Tools</h3>
+          <div class="tag-list">
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">VS Code</span>
+            <span class="tag">Jupyter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-heading">
+        <small>03 / OPEN SOURCE & WORK</small>
+        <h2>Things I'm building.</h2>
+        <p>My contributions and learning journey.</p>
+      </div>
+      <div class="project-grid">
+        <div class="card project-card">
+          <h3>LinkedIn Copilot – Open Source</h3>
+          <p>
+            Submitted a contribution adding Cmd/Ctrl + Enter keyboard
+            shortcut support to save the Quick Idea modal.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Open Source</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Pull Request #32</span>
+          </div>
+          <a class="project-link"
+             href="https://github.com/Code-Social/linkedin-copilot-main/pull/32"
+             target="_blank" rel="noopener noreferrer">View Pull Request ↗</a>
+        </div>
+
+        <div class="card project-card">
+          <h3>CodeTogether</h3>
+          <p>
+            An idea for a collaborative virtual study space where
+            developers can study together, practice coding and learn
+            from one another.
+          </p>
+          <div class="tag-list">
+            <span class="tag">Community</span>
+            <span class="tag">Collaboration</span>
+            <span class="tag">Project Idea</span>
+          </div>
+          <span class="project-link">Currently exploring</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="container">
+      <div class="section-heading">
+        <small>04 / EDUCATION</small>
+        <h2>My learning journey.</h2>
+      </div>
+      <div class="card">
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>B.Tech – Computer Science & Engineering</h3>
+            <p>Deen Dayal Upadhyaya Gorakhpur University</p>
+            <p>2025 – 2029 (Expected)</p>
+          </div>
+          <div class="timeline-item">
+            <h3>CS50P – Introduction to Programming with Python</h3>
+            <p>Harvard University · In Progress</p>
+          </div>
+          <div class="timeline-item">
+            <h3>CS50x – Introduction to Computer Science</h3>
+            <p>Harvard University · In Progress</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <div class="eyebrow">LET'S CONNECT</div>
+        <h2>Have an idea? Let's talk.</h2>
+        <p>I'm open to learning opportunities, open-source projects and collaborations.</p>
+        <div class="buttons" style="justify-content:center">
+          <a class="btn btn-primary" href="mailto:abhimodanwal175@gmail.com">Email Me ↗</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/abhishek-modanwal-0192322ba/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a class="btn btn-secondary" href="https://github.com/Abhishek-cyber1234" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © <span id="year"></span> Abhishek Modanwal. Built with curiosity & code.
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById("menuBtn");
+  const navLinks = document.getElementById("navLinks");
+
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+    menuBtn.textContent =
+      navLinks.classList.contains("active") ? "✕" : "☰";
+  });
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      menuBtn.textContent = "☰";
+    });
+  });
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
 </body>
 </html>
